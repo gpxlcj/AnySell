@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'xadmin',
     'crispy_forms',
+    'reversion',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +83,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, '../static')
+
+STATICFILES_ROOT = (
+    ('css', os.path.join(STATIC_ROOT, 'css')),
+    ('js', os.path.join(STATIC_ROOT, 'js')),
+    ('img', os.path.join(STATIC_ROOT, 'img')),
+)
