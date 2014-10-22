@@ -54,6 +54,8 @@ ROOT_URLCONF = 'web.urls.urls'
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
+AUTH_USER_MODEL = 'apps.account.models.SellUser'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -84,7 +86,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, '../static')
+STATIC_ROOT = os.path.join(BASE_DIR, '../../static')
 
 STATICFILES_ROOT = (
     ('css', os.path.join(STATIC_ROOT, 'css')),
