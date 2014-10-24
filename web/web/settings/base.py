@@ -36,9 +36,19 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'xadmin',
     'crispy_forms',
     'reversion',
+
+    'apps.account',
+    'apps.api',
+    'apps.home',
+    'apps.sell',
+    'apps.buy',
+    
+    'system.user'
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,7 +64,7 @@ ROOT_URLCONF = 'web.urls.urls'
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
-AUTH_USER_MODEL = 'apps.account.models.SellUser'
+AUTH_USER_MODEL = 'user.SellUser'
 
 
 # Database

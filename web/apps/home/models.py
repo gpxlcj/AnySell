@@ -34,6 +34,17 @@ class Coordinate(models.Model):
     latitude = FloatField(verbose_name=u'纬度', )
     longitude = FloatField(verbose_name=u'经度', )
 
+class District(models.Model):
+
+    name = CharField(verbose_name=u'名称', )
+
+class Dormintary(models.Model):
+
+    coordinate = OneToOneField(verbose_name=u'坐标类', )
+    name = CharField(verbose_name=u'名称', )
+    district = ForeignKey(verbose_name=u'学部', )
+
+
 
 class Detail_info(models.Model):
 
