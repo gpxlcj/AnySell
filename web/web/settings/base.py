@@ -46,8 +46,8 @@ INSTALLED_APPS = (
     'apps.home',
     'apps.sell',
     'apps.buy',
-    
-    'system.user'
+
+    'system.user',
 
 )
 
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'web.urls.urls'
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
-AUTH_USER_MODEL = 'user.SellUser'
+AUTH_USER_MODEL = 'user.BaseUser'
 
 
 # Database
@@ -103,3 +103,6 @@ STATICFILES_ROOT = (
     ('js', os.path.join(STATIC_ROOT, 'js')),
     ('img', os.path.join(STATIC_ROOT, 'img')),
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '../../media')

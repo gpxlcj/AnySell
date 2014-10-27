@@ -1,6 +1,6 @@
 #! -*- coding:utf8 -*-
 
-from django.contrib.auto.models import BaseUserManager
+from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
 
 class PassportManager(BaseUserManager):
@@ -12,7 +12,7 @@ class PassportManager(BaseUserManager):
             raise ValueError('Users must have an email address')
 
         user = self.model(
-            email = PassporManager.normalize_email(email),
+            email = PassportManager.normalize_email(email),
             username = username,
 
         )
