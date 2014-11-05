@@ -1,3 +1,4 @@
+#! -*- coding:utf8 -*-
 """
 Django settings for web project.
 
@@ -26,6 +27,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTHENTICATION_BACKENDS = (
+    'system.baseuser.authenticate.LoginBackend'
+)
 
 # Application definition
 
@@ -45,9 +49,10 @@ INSTALLED_APPS = (
     'apps.api',
     'apps.home',
     'apps.sell',
-    'apps.buy',
+    'apps.purchase',
+    'apps.base',
 
-    'system.user',
+    'system.baseuser',
 
 )
 
@@ -60,11 +65,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'web.urls.urls'
+ROOT_URLCONF = 'web.urls'
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
-AUTH_USER_MODEL = 'user.BaseUser'
+AUTH_USER_MODEL = 'baseuser.BaseUser'
 
 
 # Database

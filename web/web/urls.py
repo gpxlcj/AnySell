@@ -12,12 +12,10 @@ urlpatterns = patterns('',
     # url(r'^$', 'web.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'xadmin/',include(xadmin.site.urls)),
-    
     #url(r'^admin/', include(admin.site.urls)),
 )
 
-#urlpatterns = patterns('',
-#    url(r'^api/', include('apps.api.url'))
-#    url(r'')
+urlpatterns += patterns('apps.account.views',
+    url(r'^test/', 'test')
 
-#)
+)

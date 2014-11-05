@@ -1,7 +1,7 @@
 #! -*- coding:utf8 -*-
 
 from django.db import models
-from system.user.models import BaseUser
+from system.baseuser.models import BaseUser
 
 class DetailInfo(models.Model):
 

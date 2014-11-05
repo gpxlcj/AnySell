@@ -1,15 +1,15 @@
 #! -*- coding:utf8 -*-
 
 from django.contrib.auth.models import AbstractBaseUser
-
 from django.db import models
-from manage import PassportManager
+
+from web.baseuser.backmanage import PassportManager
 
 class BaseUser(AbstractBaseUser):
     '''
     用户类
     '''
-    email = models.EmailField(verbose_name=u'邮箱')
+    email = models.EmailField(verbose_name=u'邮箱', unique=True, db_index=True)
     username = models.CharField(verbose_name=u'用户名', max_length=30)
 #    password = models.CharField(verbose_name=u'密码', max_length=30)
     auth_key = models.CharField(verbose_name=u'验证身份码', max_length = 200)

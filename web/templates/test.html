@@ -3,10 +3,14 @@
   <title>Zhou Meimei</title>
   </head>
   <body>
+      {%if %}
       <form method='POST' aaction='/'>
         <div>用户名<input name = 'username' type = 'text'></div>
         <div>密码:<input name = 'password' type = 'text'></div>
-        <div><input name = 'certain' value = '确定'></div>
+        <div><input name = 'certain' value = '确定' type='submit'></div>
       </form>
+      {%else%}
+          <div>恭喜登陆成功</div>
+      {%endif%}
   </body>
 </html>
