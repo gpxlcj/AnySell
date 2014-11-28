@@ -10,6 +10,7 @@ class Image(models.Model):
 
     name = models.CharField(verbose_name=u'名称', max_length=100, blank=True)
     image = models.ImageField(verbose_name=u'图片地址', upload_to='img/')
+    date = models.DateTimeField(verbose_name=u'上传时间', auto_now = True)
 
     class Meta:
         verbose_name = u'图片'
@@ -33,4 +34,4 @@ class Coordinate(models.Model):
         verbose_name_plural = u'坐标类'
 
     def __unicode__(self):
-        return '%s' %self.id
+        return '%s' % self.id

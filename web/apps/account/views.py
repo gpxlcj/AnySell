@@ -1,6 +1,6 @@
 #! -*- coding:utf8 -*-
 from django.shortcuts import render_to_response
-from django.http import HttpResponse, HttpResponse404
+from django.http import HttpResponse, Http404
 
 def test(request):
     
@@ -14,4 +14,4 @@ def test(request):
         render_to_response('test.html', locals())
 
     else:
-        return HttpResponse404
+        return Http404

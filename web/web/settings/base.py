@@ -1,4 +1,3 @@
-#! -*- coding:utf8 -*-
 """
 Django settings for web project.
 
@@ -18,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h_apabv_ygqhknpg06-ww1s@mv1k04nsa8c-#grv%kicmu32b&'
+SECRET_KEY = '7$8%5djic7g)r(4g%=vs(86gq0z-^!+q!e!s6ozmw&hp7k%8q4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -27,9 +26,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTHENTICATION_BACKENDS = (
-    'system.baseuser.authenticate.LoginBackend'
-)
 
 # Application definition
 
@@ -40,21 +36,18 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'xadmin',
-    'crispy_forms',
-    'reversion',
-
+    
+    'system.customuser',
+    
     'apps.account',
     'apps.api',
-    'apps.home',
-    'apps.sell',
-    'apps.purchase',
     'apps.base',
-
-    'system.baseuser',
-
+    'apps.home',
+    'apps.purchase',
+    'apps.sell',
 )
+
+AUTH_USER_MODEL = 'customuser.CustomUser'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -69,16 +62,14 @@ ROOT_URLCONF = 'web.urls'
 
 WSGI_APPLICATION = 'web.wsgi.application'
 
-AUTH_USER_MODEL = 'baseuser.BaseUser'
-
-
+TIME_ZONE = 'GMT-8'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '../test.db'),
     }
 }
 
@@ -112,6 +103,6 @@ STATICFILES_ROOT = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../../media')
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates')
 
 

@@ -1,32 +1,36 @@
 #! -*- coding:utf8 -*-
 
 from django.db import models
-from system.baseuser import BaseUser
+from django.contrib.auth import get_user_model
+from system.customuser.models import CustomUser
+
+CustomUser = get_user_model()
 
 class SellCart(models.Model):
 
     '''
     售货车类
     '''
-    user = models.OneToOneField(BaseUser, verbose_name=u'用户')
+    user = models.OneToOneField(CustomUser, verbose_name=u'用户', related_name=u'sell_cart')
+    
 
     class Meta:
         verbose_name = u'售货车'
         verbose_name_plural = u'售货车类'
 
     def __unicode__(self):
-        return '%s' % user.name
+        return '%s' % self.user.name
 
 class SellComment(models.Model):
 
     '''
     卖方被评价类
     '''
-    user = models.OneToOneField(BaseUser, verbose_name=u'用户')
+    user = models.OneToOneField(CustomUser, verbose_name=u'用户', related_name=u'sell_comment')
 
     class Meta:
         verbose_name = u'售货车'
         verbose_name_plural = u'售货车类'
 
     def __unicode__(self):
-        return '%s' % user.name
+        return '%s' % self.user.name
