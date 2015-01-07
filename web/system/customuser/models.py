@@ -17,10 +17,11 @@ class PassportManager(BaseUserManager):
             raise ValueError('Users must have an email address')
 
         user = self.model(
-            email = PassportManager.normalize_email(email),
-            username = username,
+            email=PassportManager.normalize_email(email),
+            username=username,
         )
         user.set_password(password)
+        user.is_active = True
         user.save(using=self._db)
         return user
 
@@ -39,12 +40,16 @@ class CustomUser(AbstractBaseUser):
     '''
     用户类
     '''
-    email = models.EmailField(verbose_name=u'邮箱', unique=True, db_index=True)
+    email = models.EmailField(verbose_name=u'邮箱', unique=True, db_index=True,)
     username = models.CharField(verbose_name=u'用户名', max_length=30)
+#    usermobile = models.CharField(verbose_name=u'用户注册手机', unique=True, max_length=16 )
+
     auth_key = models.CharField(verbose_name=u'验证身份码', max_length=200)
     update_key = models.CharField(verbose_name=u'更新验证身份码', max_length=200)
-    is_activate = models.BooleanField(verbose_name=u'是否激活', default=False)
-    is_active = models.BooleanField(verbose_name=u'是否登陆', default=False)
+    register_time = models.DateTimeField(verbose_name=u'注册时间', auto_now=True)
+
+    is_userlogin = models.BooleanField(verbose_name=u'是否登陆', default=False)
+    is_active = models.BooleanField(verbose_name=u'是否激活', default=False)
     is_staff = models.BooleanField(verbose_name=u'是否管理员', default=False)
 
     USERNAME_FIELD = 'email'

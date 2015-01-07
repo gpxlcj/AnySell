@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta></meta>
+    <title>摆摊</title>
+    {% csrf_token %}
+</head>
+<body>
+    <script type="text/javascript"></script>
+    <script>
+        var url1 = "/login/";
+        var url2 = "/register/";
+        var method1 = "POST";
+        var method2 = "GET";
+
+        function sm1()
+        {
+            document.getElementById("form1").action = url1;
+            document.getElementById("form1").method = method1;
+            document.getElementById("form1").submit();
+        }
+
+        function sm2()
+        {
+            document.getElementById("form1").action = url2;
+            document.getElementById("form1").method = method2;
+            document.getElementById("form1").submit();
+        }
+
+    </script>
+    {% if not user.is_activate %}
+    <form action="" method="" id="form1">
+        {% csrf_token %}
+        <table>
+            <td>
+                <tr>{{user.username}}</tr>
+                <tr><input type="text" name="username"/></tr>
+                <tr><input type="text" name="password"></tr>
+                <tr><input type="button" value="确定" id="b1" onclick="sm1()"></tr>
+                <tr><input type="button" value="注册" id="b2" onclick="sm2()"></tr>
+            </td>
+        </table>
+    </form>
+    {% else %}
+    <div>你已经登陆了！</div>
+    {%endif%}
+</body>
+</html>

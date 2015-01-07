@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = (
@@ -46,13 +46,16 @@ INSTALLED_APPS = (
     'apps.purchase',
     'apps.sell',
 )
+AUTHENTICATION_BACKENDS = (
+    'system.customuser.backend.LoginBackend',
+)
 
 AUTH_USER_MODEL = 'customuser.CustomUser'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+#    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -78,7 +81,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -103,6 +106,5 @@ STATICFILES_ROOT = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../../media')
 
-TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates')
-
+TEMPLATE_DIRS = os.path.join(BASE_DIR, '../templates')
 

@@ -17,7 +17,7 @@ class Image(models.Model):
         verbose_name_plural = u'图片类'
 
     def __unicode__(self):
-        return '%s' % self.image
+        return '%s' % self.name
 
 
 

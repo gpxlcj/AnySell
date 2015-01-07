@@ -3,8 +3,11 @@
 from django.db import models
 from system.customuser.models import CustomUser
 from django.contrib.auth import get_user_model
+from apps.home.models import Dormitory
 
 CustomUser = get_user_model()
+
+
 class DetailInfo(models.Model):
 
     name = models.CharField(verbose_name=u'姓名', blank=True, max_length=50)
@@ -16,7 +19,10 @@ class DetailInfo(models.Model):
 
     user = models.OneToOneField(CustomUser, verbose_name=u'所属用户', related_name=u'user_detail_info' )
 
-    dormintary = models.ForeignKey(CustomUser, verbose_name=u'宿舍', blank=True, related_name=u'detail_info')
+    dormitory = models.ForeignKey(Dormitory, verbose_name=u'宿舍', blank=True, related_name=u'detail_info')
+
+    latitude = models.FloatField(verbose_name=u'纬度', blank=True)
+    longitude = models.FloatField(verbose_name=u'经度', blank=True)
 
     class Meta:
         verbose_name = u'详细信息'
@@ -24,6 +30,7 @@ class DetailInfo(models.Model):
 
     def __unicode__(self):
         return '%s' % self.user.name
+
 
 class SellerInfo(models.Model):
     '''
@@ -40,6 +47,7 @@ class SellerInfo(models.Model):
 
     def __unicode__(self):
         return "%s" % self.user.name
+
 
 class CustomerInfo(models.Model):
     '''

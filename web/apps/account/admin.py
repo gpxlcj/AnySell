@@ -3,7 +3,7 @@ from django.contrib import admin
 from apps.account.models import DetailInfo, SellerInfo, CustomerInfo 
 
 class DetailInfoAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'qq', 'grade', 'college', 'user', 'dormintary')
+    list_display = ('name', 'phone', 'qq', 'grade', 'college', 'user', 'dormitory')
 
 
 class SellerInfoAdmin(admin.ModelAdmin):
