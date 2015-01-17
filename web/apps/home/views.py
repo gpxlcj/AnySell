@@ -2,6 +2,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from apps.home.models import Production, Dormitory, District, Category, Comment, Label
+
 from lib.customjson import render_json
 
 INDEX_HTML = 'index.html'
@@ -173,3 +174,9 @@ def research(request):
 
     else:
         return Http404
+
+def product_info(request):
+    return Http404
+
+def production_list(request):
+    return Http404

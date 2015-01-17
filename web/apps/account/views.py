@@ -46,7 +46,9 @@ def custom_register(request):
             return render_json(result)
 
         user = CustomUser.objects.create_user(email, username, password)
-        return Http404
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return render_to_response('login.html', locals())
     else:
         return Http404
 
@@ -115,6 +117,6 @@ def custom_logout(request):
         custom_user = CustomUser.objects.get(username=username)
         logout(request)
         custom_user.is_userlogin = False
-        return redirect('/login/')
+        return redirect('/account/login/')
     else:
         return HttpResponse('<div>您已经登出了</div>')
