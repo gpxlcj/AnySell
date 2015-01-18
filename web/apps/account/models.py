@@ -21,15 +21,15 @@ class DetailInfo(models.Model):
 
     dormitory = models.ForeignKey(Dormitory, verbose_name=u'宿舍', blank=True, related_name=u'detail_info')
 
-    latitude = models.FloatField(verbose_name=u'纬度', blank=True)
-    longitude = models.FloatField(verbose_name=u'经度', blank=True)
+    latitude = models.FloatField(verbose_name=u'纬度', default=0)
+    longitude = models.FloatField(verbose_name=u'经度', default=0)
 
     class Meta:
         verbose_name = u'详细信息'
         verbose_name_plural = u'详细信息类'
 
     def __unicode__(self):
-        return '%s' % self.user.name
+        return '%s' % self.user.username
 
 
 class SellerInfo(models.Model):
@@ -46,7 +46,7 @@ class SellerInfo(models.Model):
         verbose_name_plural = u'用户卖家信息类'
 
     def __unicode__(self):
-        return "%s" % self.user.name
+        return "%s" % self.user.username
 
 
 class CustomerInfo(models.Model):
@@ -63,5 +63,5 @@ class CustomerInfo(models.Model):
         verbose_name_plural = u'用户买家信息类'
 
     def __unicode__(self):
-        return '%s' % self.user.name
+        return '%s' % self.user.username
 

@@ -1,7 +1,7 @@
 #! -*- coding:utf8 -*-
 
 from django.contrib import admin
-from apps.home.models import District, Dormitory, Category, Production, Comment
+from apps.home.models import District, Dormitory, Category, Production, Comment, Label
 
 
 class DistrictAdmin(admin.ModelAdmin):
@@ -24,7 +24,9 @@ class CommentAdmin(admin.ModelAdmin):
 
     list_display = ('user', 'obj_user', 'content', 'time', 'title', )
 
+class LabelAdmin(admin.ModelAdmin):
 
+    list_display = ('name',)
 
 
 
@@ -34,3 +36,4 @@ admin.site.register(Dormitory, DormitoryAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Production, ProdutionAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Label, LabelAdmin)

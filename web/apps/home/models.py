@@ -90,11 +90,14 @@ class Production(models.Model):
     '''
 
     title = models.CharField(verbose_name=u'标题', max_length=120)
-    description = models.CharField(verbose_name=u'描述', max_length=500)
+    description = models.CharField(verbose_name=u'描述', max_length=600)
     price = models.FloatField(verbose_name=u'价格')
     number = models.IntegerField(verbose_name=u'数量', default=-1)
-    images = models.ManyToManyField(Image, verbose_name=u'插图')
+    images = models.ManyToManyField(Image, verbose_name=u'插图', related_name=u'production_images')
+    cover = models.OneToOneField(Image, verbose_name=u'封面', blank=True, related_name=u'production_cover')
+
     publish_time = models.DateTimeField(verbose_name=u'发布时间', auto_now=True)
+    hit_num = models.IntegerField(verbose_name=u'点击数', default=0)
 
     category = models.ForeignKey(Category, verbose_name=u'类别', related_name=u'production_category')
     label = models.ManyToManyField(Label, verbose_name=u'标签', related_name=u'production_label')

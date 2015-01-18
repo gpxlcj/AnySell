@@ -28,10 +28,12 @@ class Coordinate(models.Model):
     '''
     latitude = models.FloatField(verbose_name=u'纬度')
     longitude = models.FloatField(verbose_name=u'经度')
+    generate_time = models.DateTimeField(verbose_name=u'时间', auto_now=True)
 
     class Meta:
         verbose_name = u'坐标'
         verbose_name_plural = u'坐标类'
 
     def __unicode__(self):
-        return '%s' % self.id
+        temp_time = str(self.generate_time) + u''
+        return u'coordinate_%s' % temp_time

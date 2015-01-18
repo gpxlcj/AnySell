@@ -2,6 +2,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from apps.home.models import Production, Dormitory, District, Category, Comment, Label
+
 from lib.customjson import render_json
 
 INDEX_HTML = 'index.html'
@@ -65,7 +66,6 @@ def district_dorm(request):
 
     else:
         return Http404
-
 
 def research(request):
 
@@ -173,3 +173,36 @@ def research(request):
 
     else:
         return Http404
+
+def product_info(request, product_id):
+
+    try:
+        if request.method == 'GET':
+            product = Production.objects.filter(id=product_id)
+            if product:
+                product = product[0]
+            else:
+                return Http404
+
+            return render_to_response('product_info', locals())
+        else:
+            return Http404
+    except:
+        return HttpResponse('Server error')
+
+def production_list(request):
+
+    if request.method == 'GET':
+        try:
+            production_list_by_hit = Production.objects.order_by('hit_num')
+            production_list_by_time = Production.objects.order_by('publish_time')
+            if len(production_list_by_hit)>3:
+                production_list_by_hit = production_list_by_hit[4]
+                production_list_by_time = production_list_by_time[4]
+            else:
+                pass
+        except:
+            return Http404
+    else:
+        return HttpResponse("Don't support this kind request method")
+    return render_to_response('production_list', locals())
