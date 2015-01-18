@@ -1,6 +1,7 @@
+#! -*- coding:utf8 -*-
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('api.views',
+urlpatterns = patterns('apps.api.views',
 
     url(r'^get_dormitory/$', 'get_dormitory'),
 

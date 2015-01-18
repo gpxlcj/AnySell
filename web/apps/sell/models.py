@@ -21,7 +21,7 @@ class SellCart(models.Model):
         verbose_name_plural = u'售货车类'
 
     def __unicode__(self):
-        return '%s' % self.user.name
+        return '%s' % self.user.username
 
 class SellComment(models.Model):
 
@@ -35,4 +35,4 @@ class SellComment(models.Model):
         verbose_name_plural = u'卖方被评价类'
 
     def __unicode__(self):
-        return '%s' % self.user.name
+        return '%s' % self.user.username

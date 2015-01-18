@@ -57,6 +57,11 @@ class CustomUser(AbstractBaseUser):
 
     objects = PassportManager()
 
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        super(AbstractBaseUser, self).save(force_insert, force_update, using, update_fields)
+
     class Meta:
         verbose_name = u'用户'
         verbose_name_plural = u'用户类'
