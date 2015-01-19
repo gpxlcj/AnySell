@@ -13,7 +13,30 @@ from lib.customjson import render_json
 CustomUser = get_user_model()
 EMPTY_ANS = 10101
 DATA_ANS = 11101
-
+def get_category(request):
+    '''
+    :param request:
+    :return:
+    '''
+    if request.method == 'GET':
+        categories = Category.objects.all()
+        category_list = list()
+        for category in categories:
+            temp = {
+                'name': category.name,
+                'id': category.id,
+            }
+            category_list.append(temp)
+        if category_list:
+            data = {
+                'status': 11101,
+                'category_list': category_list,
+            }
+        else:
+            data = {
+                'status': 10101,
+            }
+        return render_json(data)
 def get_dormitory(request):
     '''
     通过学部名获取宿舍楼
@@ -25,8 +48,10 @@ def get_dormitory(request):
         latitude = float()
         longitude = float()
         data = list()
+        district_id = int()
         if request.GET.has_key('district'):
-            district_id = int(request.GET['district'])
+            if request.GET['district']:
+                district_id = int(request.GET['district'])
             try:
                 district = District.objects.get(id_code=district_id)
             except:
@@ -87,8 +112,10 @@ def get_production_by_research(request):
 
         if request.GET.has_key("dormitory"):
             temp = request.GET['dormitory']
-            dormitory = Dormitory.objects.filter(id_code=int(temp))
-            DetailInfo.objects.get()
+            if temp:
+                dormitory = Dormitory.objects.filter(id_code=int(temp))
+            else:
+                pass
             if dormitory:
                 dormitory = dormitory[0]
                 productions = get_production_filter_dormitory(dormitory)
@@ -102,7 +129,8 @@ def get_production_by_research(request):
 
         if request.GET.has_key("district"):
             temp = request.GET['district']
-            district = District.objects.filter(id_code=int(temp))
+            if temp:
+                district = District.objects.filter(id_code=int(temp))
             if not productions_list:
 
                 if district:
@@ -182,7 +210,10 @@ def get_production_by_research(request):
                         'price': i_item.price,
                         'number': i_item.number,
                         'time': str(i_item.publish_time),
+                        'id': i_item.id,
+
                         'dormitory_id': dormitory.id_code,
+                        'dormitory_name': dormitory.name,
                     }
                     data_productions.append(data_temp)
                     if dormitory.id_code not in data_dormitories_id:
@@ -191,6 +222,7 @@ def get_production_by_research(request):
                             'dormitory_id': dormitory.id_code,
                             'latitude': dormitory.coordinate.latitude,
                             'longitude': dormitory.coordinate.longitude,
+                            'dormitory_name': dormitory.name,
                         }
                         data_dormitories.append(data_temp)
             data = {
