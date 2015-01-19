@@ -171,20 +171,32 @@ def get_production_by_research(request):
         if productions_list:
             data_temp = dict()
             data_productions = list()
+            data_dormitories = list()
+            data_dormitories_id = list()
             for i_productions in productions_list:
                 for i_item in i_productions:
                     sellcart = i_item.sell_production.all()[0]
+                    dormitory = sellcart.user.user_detail_info.dormitory
                     data_temp = {
                         'title': i_item.title,
                         'price': i_item.price,
                         'number': i_item.number,
                         'time': str(i_item.publish_time),
-                        'dormitory_id': sellcart.user.user_detail_info.dormitory.id_code,
+                        'dormitory_id': dormitory.id_code,
                     }
                     data_productions.append(data_temp)
+                    if dormitory.id_code not in data_dormitories_id:
+                        data_dormitories_id.append(dormitory.id_code)
+                        data_temp = {
+                            'dormitory_id': dormitory.id_code,
+                            'latitude': dormitory.coordinate.latitude,
+                            'longitude': dormitory.coordinate.longitude,
+                        }
+                        data_dormitories.append(data_temp)
             data = {
                 'status': DATA_ANS,
-                'productions': data_productions
+                'productions': data_productions,
+                'dormitories': data_dormitories,
             }
 
         else:
