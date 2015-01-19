@@ -1,0 +1,35 @@
+<!--登陆-->
+<div class="theme-popover" >
+ <div class="theme-poptit">
+      <a style="cursor:pointer" title="关闭" class="close" onclick="Disappear()">×</a>
+      <h3>登录 是一种态度</h3>
+ </div>
+ <div class="theme-popbod dform">
+       <form class="theme-signin" name="loginform" action="/account/login/" method="post">
+            <ol>
+                 <li><h4>你必须先登录！</h4></li>
+                 <li><strong>用户名：</strong><input class="ipt" type="text" name="username" value="lanrenzhijia" size="20" /></li>
+                 <li><strong>密码：</strong><input class="ipt" type="password" name="password" value="***" size="20" /></li>
+                 <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
+            </ol>
+       </form>
+ </div>
+</div>
+
+<!--登陆-->
+<!--眉头-->
+<div class="first-div">
+    <div class="div-func">
+        {% if not username %}
+            <div class="first-div-func-each" id="topTag1" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')" onclick="TurnOut()">&diams;登陆</div>
+        {% else %}
+            <div class="first-div-func-each" id="topTag1" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')" >{{username}}</div>
+        {% endif %}
+        <div class="first-div-func-each" id="topTag2" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">购物车</div>
+        <div class="first-div-func-each" id="topTag3" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">&hearts;收藏夹</div>
+        <div class="first-div-func-each" id="topTag4" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">网站导航</div>
+        <div class="first-div-func-each" id="topTag5" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">新消息</div>
+
+    </div>
+</div>
+<!--眉头-->
