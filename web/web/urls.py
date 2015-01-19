@@ -1,6 +1,6 @@
 #! -*-coding:utf8-*-
-from django.conf.urls import patterns, include, url
-
+from django.conf.urls import patterns, include, url, static
+from django.conf import settings
 from django.contrib import admin
 import apps.account.urls
 import apps.api.urls
@@ -12,6 +12,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
+urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
 
 #主页面
 urlpatterns += patterns('apps.home.views',
@@ -19,7 +22,9 @@ urlpatterns += patterns('apps.home.views',
     url(r'^$', 'index'),
     url(r'^index/$', 'index'),
     url(r'^search/$', 'index'),
-    url(r'^product/?P<pro>[0-9]+/', 'product_info'),
+    url(r'^publish/$', 'publish'),
+
+    url(r'^p/(?P<pro>[0-9]+)/', 'product_info'),
     url(r'^production_list/$', 'production_list'),
 )
 

@@ -1,0 +1,187 @@
+@charset "utf-8";
+/* CSS Document */
+li{
+	float:left;
+	margin-left:40px;}
+	
+.Display
+{
+	width:960px;
+	height:500px;
+	MARGIN-RIGHT: auto;
+	MARGIN-LEFT: auto;
+	margin-top:10px;
+}
+.DisplayPic
+{
+	float:left;
+	width:450px;
+	height:450px;
+	background-color:#fff;
+	border-radius:5px;
+}
+
+.DownOfPicDis_pic
+{
+	border:solid;
+	border-color:#cfcfcf;
+}
+
+.DownOfPicDis_pic2
+{
+	border:solid;
+	border-color:#000;
+}
+
+.UpOfPicDis
+{
+	border-radius:5px;
+	margin-top:30px;
+	width:450px;
+	height:300px;
+	background-color:#fff;
+}
+
+.DownOfPicDis
+{
+	border-radius:5px;
+	margin-top:30px;
+	width:450px;
+	height:60px;
+	background-color:#fff;
+	text-align:center;
+}
+.DownOfPicDis2
+{
+	border-radius:5px;
+	margin-top:5px;
+	width:450px;
+	height:5px;
+	background-color:#fff;
+	text-align:center;
+	visibility:hidden;
+}
+
+
+
+.DisplayAddrSear
+{
+	width:450px;
+	height:45px;
+}
+.PicDisplayAddr
+{
+	border-radius:5px;
+}
+.PicDisplayAddrSum
+{
+	float:left;
+	width:450px;
+	height:450px;
+	margin-left:50px;
+}
+
+.DisplayText1
+{
+	margin-top:5px;
+	border-radius:5px;
+	float:left;
+	width:360px;
+	height:145px;
+	background-color:#fff;
+	color:#000;
+}
+.DisplayText2
+{
+	margin-top:5px;
+	border-radius:5px;
+	float:left;
+	width:600px;
+	height:145px;
+	background-color:#fff;
+	color:#000;
+}
+.title
+{
+	font-size:24px;
+}
+.sell
+{
+	font-size:20px;
+	float:left;
+}
+.howmuch
+{
+	font-size:20px;
+	float:none
+}
+.linedivide
+{
+	
+}
+.buybutton
+{
+	width:200px;
+	height:50px;
+	font-size:24px;
+	margin-left:auto;
+	margin-right:auto;
+	background:#fff;
+	overflow:visible;
+	color:#000;
+}
+.pubtime1
+{
+	font-size:20px;
+	float:left;
+	margin-left:10px;
+}
+
+.pubtime2
+{
+	font-size:20px;	
+}
+
+.storage1
+{
+	font-size:20px;
+	float:left;
+	margin-left:10px;
+}
+
+.storage2
+{
+	font-size:20px;
+}
+
+.address1
+{
+	font-size:20px;
+	float:left;
+	margin-left:10px;
+}
+
+.address2
+{
+	font-size:20px;
+}
+
+.GoButton
+{
+	width:50px;
+	height:40px;
+	font-size:24px;
+	margin-left:20px;
+	background:#fff;
+	overflow:visible;
+	color:#000;
+}
+.Position
+{
+	margin-left:20px;
+	width:100px;
+	height:40px;
+	color:#000;
+	font-size:16px;
+	padding:0;
+}

@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+.metadiv
+{
+	width:100%;
+	height:40px;
+	background-color:#057748;
+	position:relative;
+}
+.InputDiv
+{
+	width:960px;
+	height:550px;
+	position:relative;
+	MARGIN-RIGHT:auto;
+	MARGIN-LEFT:auto;
+	background-color:#fff;
+}
+
+.InputDivSon
+{
+	position:relative;
+	MARGIN-RIGHT:auto;
+	MARGIN-LEFT:auto;
+	text-align:center;
+	width:320px;
+}
+
+.InputDivGraSon1
+{
+	float:left;
+}
+
+.InputDivGraSon2
+{
+}
+.Inputtr
+{
+	
+}
+
+#submitbutton
+{
+	width:200px;
+	height:50px;
+	font-size:20px;
+	margin-left:auto;
+	margin-right:auto;
+	background:#fff;
+	overflow:visible;
+	color:#000;
+}
+.request
+{
+	font-size:10px;
+	color:#F00;
+}
+
+#notmail
+{
+	font-size:10px;
+	color:#F00;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css"/>
+<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+<script type="text/javascript" src="../js/basic.js"></script>
+<script type="text/javascript" src="../js/GetMap.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=7zmiSHRUA61ha3tbu8ZRHGCH"></script>
+</head>
+<body onload="Map()">
+<!--登陆-->
+	<div class="theme-popover" >
+     <div class="theme-poptit">
+          <a style="cursor:pointer" title="关闭" class="close" onclick="Disappear()">×</a>
+          <h3>登录 是一种态度</h3>
+     </div>
+     <div class="theme-popbod dform">
+           <form class="theme-signin" name="loginform" action="" method="post">
+                <ol>
+                     <li><h4>你必须先登录！</h4></li>
+                     <li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="lanrenzhijia" size="20" /></li>
+                     <li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="***" size="20" /></li>
+                     <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
+                </ol>
+           </form>
+     </div>
+	</div>
+    
+<!--登陆-->
+<!--眉头-->
+ <div class="third-div-pre">
+	<div class="first-div">
+    	<div class="div-func">
+        	<div class="first-div-func-each" id="topTag1" onMouseOver="ChangeColor('topTag1','#afdd22')" onMouseOut="ChangeColor('topTag1','#057748')" onclick="TurnOut()">&diams;登陆</div>
+            <div class="first-div-func-each" id="topTag2" onMouseOver="ChangeColor('topTag2','#afdd22')" onMouseOut="ChangeColor('topTag2','#057748')">购物车</div>
+            <div class="first-div-func-each" id="topTag3" onMouseOver="ChangeColor('topTag3','#afdd22')" onMouseOut="ChangeColor('topTag3','#057748')">&hearts;收藏夹</div>
+            <div class="first-div-func-each" id="topTag4" onMouseOver="ChangeColor('topTag4','#afdd22')" onMouseOut="ChangeColor('topTag4','#057748')">网站导航</div>
+            <div class="first-div-func-each" id="topTag5" onMouseOver="ChangeColor('topTag5','#afdd22')" onMouseOut="ChangeColor('topTag5','#057748')">新消息</div>
+            
+        </div>
+    </div>
+<!--眉头-->
+<!--插进来一个-->
+	<div class="onefive-div">
+    	<div class="onefive-div-func">
+    		<div class="onefive-div-logo">
+        	</div>
+            <div class="onefive-div-search">         
+            <form style=" position:absolute;left:40%;top:25%;width:400px; height:50px;">
+            	<table style="height:50px"><tr><input class="onefive-div-search-text" type="text"/><input class="onefive-div-search-submit" value="搜索" type="submit"/></tr></table>
+            </form>  
+            <div class="onefive-div-tag" id="tag_div">
+            	<div class="onefive-div-tagsmall"id="Close0">
+                	<a style="cursor:pointer; float:right;" title="关闭" class="close"  onclick="CloseTag('Close0');">×</a>
+                </div>
+                <div class="onefive-div-tagsmall"id="Close1">
+                	<a style="cursor:pointer;float:right" title="关闭" class="close" onclick="CloseTag('Close1');">×</a>
+                </div>
+                <div class="onefive-div-tagsmall" id="Close2">
+                	<a style="cursor:pointer;float:right" title="关闭"  class="close" onclick="CloseTag('Close2');">×</a>
+                </div>
+                <div class="onefive-div-tagsmall"id="Close3">
+                	<a style="cursor:pointer;float:right" title="关闭" class="close" onclick="CloseTag('Close3');">×</a>
+                </div>
+            </div>          
+            </div>            
+        </div>
+    </div>
+<!--插进来一个-->
+<!--眉头下面那个-->
+	<div class="second-div">
+    	<div class="div-func">
+        	<div class="second_div_func_each">
+            	<div class="second_div_func_left" style="background-color:#a8d300;">首页</div>
+                <div class="second_div_func_left">闲置数码</div>
+                <div class="second_div_func_left">闲置书籍</div>
+                <div class="second_div_func_left">闲置衣物</div>
+                <div class="second_div_func_left">闲置日用</div>
+            </div>
+        	<div class="second_div_func_right">我的闲置<img src="../pic/arrow.png" id="img_arrow"></img></div>
+            <div class="second_div_func_right" onclick="window.open('publishgoods.html')">我要发布</div>
+        </div>
+    </div>	
+
+<!--眉头下面那个-->
+<!--地图那一栏-->
+   <div class="third-div-pre"> 	
+	<div class="third-div">
+    	<div class="connect-map" id="connect-map-id" style="width:200px;height:480px">       	
+        </div>
+        <div id="container" style="width:590px;height:480px"></div>	
+        <div class="connect-map" style="width:120px;height:480px">      
+        	<div class="connect-map-area" style="width:110px;height:50px" onclick="AreaChoiceFirst('WenLi_Ul','XinXi_Ul','Gong_Ul')">文理学部</div> 
+            <ul id="WenLi_Ul" style="display:none" >
+				 <div class="over_2" id="Meiyuan" onclick="GetCoordinate('Meiyuan')">梅园</div>  
+				 <div class="over_2" id="Fengyuan">枫园</div> 
+				 <div class="over_2" id="Guiyuan">桂园</div> 
+				 <div class="over_2" id="Hubin">湖滨</div>                  
+			</ul>
+          
+            <div class="connect-map-area" style="width:110px;height:50px" onclick="AreaChoiceFirst('XinXi_Ul','WenLi_Ul','Gong_Ul')">信息学部</div> 
+            	<ul id="XinXi_Ul" style="display:none" >
+				 <div class="over_2" id="Guoruan">国软</div>  
+				 <div class="over_2" id="XQita">其他</div>                  
+				</ul>
+            
+            <div class="connect-map-area" style="width:110px;height:50px"onclick="AreaChoiceFirst('Gong_Ul','WenLi_Ul','XinXi_Ul')">工学部</div> 
+           		 <ul id="Gong_Ul" style="display:none"  >
+				 <div class="over_2" id="Shuigsyc">水工试验场</div>  
+				 <div class="over_2" id="Dongjiyuan">动机院</div> 
+				 <div class="over_2" id="GQita">其他</div>
+				</ul>
+
+            <div class="connect-map-area" style="width:110px;height:50px">医学部</div> 
+        </div>	
+    </div>
+   </div>
+<!--地图那一栏-->	
+<!--推荐栏-->
+<div class="forth-div">
+	<div class="forth-div-func"></div>	
+ 	<div class="forth-div-func"></div>
+ 	<div class="forth-div-func"></div>
+	<div class="forth-div-func"></div>
+</div>
+<!--推荐栏-->
+<div class="theme-popover-mask"></div><!--登陆窗口的覆盖-->
+
+</body>
+</html>

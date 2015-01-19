@@ -1,0 +1,37 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, blockquote, p{margin:0;padding:0}
+li {list-style-type:none;list-style-position:outside}
+body{background:#d0d7e1 url(../images/bg.jpg) no-repeat center 0px;margin:0px auto;}
+img{border:0;}
+.ContainerPic{width:450px;margin:0px auto;}
+.head{ width:960px;margin:0px auto;padding-top:45px;text-align:center;font-size:13px;color:#002856;font-weight:bold;font-family:Verdana;}
+.head span {font-weight:normal;}
+.button span{display:block;float:left;margin-top:20px;margin-left:10px;}
+.button .btn_pro {padding-left:330px;width:132px;height:28px;text-indent:-9999px;}
+.button .btn_pro a {display:block;width:132px;height:28px;background:url(../images/sprite.gif) no-repeat 0 -94px;}
+.button .btn_add {width:132px;height:28px;text-indent:-9999px;}
+.button .btn_add a {display:block;width:132px;height:28px;background:url(../images/sprite.gif) no-repeat 0 -123px;}
+.image {width:850px;height:520px;line-height:520px;text-align:center;margin:80px auto 0;}
+.image img {width:612px;height:520px;overflow:hidden;}
+.switch {width:708px;height:87px;background:url(../images/switch_link_11.jpg) center 0px no-repeat;margin:0px auto;}
+.clear{clear:both;}
+.icon1{display:inline;width:15px;float:left;padding-top:30px;padding-left:18px;text-indent:-9999px;}
+.icon1 a{display:block;width:15px;height:30px;background:url(../images/sprite.gif) no-repeat -693px -92px;}
+.icon1 a:hover {background:url(../images/sprite.gif) no-repeat -693px -132px;}
+.icon2{float:right;width:15px;padding-top:30px;padding-right:15px;text-indent:-9999px;}
+.icon2 a{display:block;width:15px;height:30px;background:url(../images/sprite.gif) no-repeat -670px -92px;}
+.icon2 a:hover{background:url(../images/sprite.gif) no-repeat -670px -132px;}
+/* Download by http://www.codefans.net */
+.switch_center {float:left;width:585px;height:83px;margin-left:28px;overflow:hidden;}
+.switch_center ul {}
+.switch_center li {display:inline;float:left;width:66px;height:66px;margin-right:20px;padding-top:10px;}
+.switch_center li a {display:block;width:60px;height:60px;border:1px solid #ccc;}
+.switch_center li a img {width:60px;height:60px;}
+.switch_center li a.on {
+	border:1px solid #FF9900;
+}
+.switch_center li a:hover {border:1px solid #FF9900;}
+
+.loading {width:850px;height:520px;line-height:520px;background:#333 url(../images/loading.gif) no-repeat center center;}
+.bottom {width:960px;text-align:center;font-size:12px;color:#002856;margin-top:50px;margin-bottom:50px;}
+.bottom a{text-decoration:none;padding:0 5px;color:#002856;font-size:12px;font-family:"宋体";}
+.bottom a:hover {color:#ff6500;}

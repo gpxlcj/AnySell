@@ -1,6 +1,6 @@
 #! -*- coding:utf8 -*-
 from django.shortcuts import render_to_response, redirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate, get_user_model
 
 from lib.customjson import render_json
@@ -44,11 +44,13 @@ def custom_register(request):
         else:
             result = {'status': 0, 'error_code': 10002}
             return render_json(result)
-
-        user = CustomUser.objects.create_user(email, username, password)
-        user = authenticate(username=username, password=password)
-        login(request, user)
-        return render_to_response('login.html', locals())
+        if email and username and password:
+            user = CustomUser.objects.create_user(email, username, password)
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/index/')
+        else:
+            return HttpResponse('null')
     else:
         return Http404
 
@@ -59,7 +61,12 @@ def custom_login(request):
     '''
 
     if request.method == 'POST':
-
+        is_index = request.META['HTTP_REFERER']
+        print is_index[-6:-1]
+        if is_index[-6:-1] == 'index':
+            is_index = True
+        else:
+            is_index = False
         #判断用户是否已经登陆
         if request.user.is_authenticated():
             result = {'status': 11002}
@@ -87,6 +94,10 @@ def custom_login(request):
                 login(request, user)
                 user.is_userlogin = True
                 result = {'status': 11001}
+                if is_index:
+                    username = user.username
+                    print username
+                    return HttpResponseRedirect('/index/')
                 return render_json(result)
             else:
                 result = {'status': 10005}
@@ -120,3 +131,15 @@ def custom_logout(request):
         return redirect('/account/login/')
     else:
         return HttpResponse('<div>您已经登出了</div>')
+def custom_user_center(request):
+
+    '''
+    用户中心
+    '''
+    if request.user.is_authenticated():
+        return redirect('/account/login/')
+    else:
+        if request.method == 'POST':
+            return redirect('/index/')
+        else:
+            return render_to_response('usercenter.html', locals())
