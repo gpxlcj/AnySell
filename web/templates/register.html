@@ -1,16 +1,47 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>注册</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户注册</title>
+<link rel="stylesheet" type="text/css" href="/static/css/register.css"/>
+<script type="text/javascript" src="/static/js/register.js"></script>
+<script type="text/javascript" src="/static/js/jquery.js"></script>
 </head>
-
 <body>
-    <form method="POST" action="/account/register/">
-        <div><input type="text" name="username" /></div>
-        <div><input type="text" name="email" /></div>
-        <div><input type="text" name="password" /></div>
-        <div><input type="text" name="repassword" /></div>
-        <div><input type="submit" value="确定"/></div>
-    </form>
+	<div class="metadiv"></div>
+    <div class="InputDiv">
+   		<h1>账户注册</h1>
+        <hr></hr>
+        <form  method="POST" action="/account/register/" class="InputDivSon">
+        <table>
+                    <tr class="Inputtr">
+                     	<th><strong>用户名</strong></th>
+                        <th><input name="username" id="username"  onblur="isnull(this.id,'notid')" class="ipt" type="text" value="" size="20" /></th>
+                        <th class="request" id="notid"></th>
+                      </tr>
+                      
+                      <tr class="Inputtr">
+                     	<th><strong>密码</strong></th>
+                        <th><input  onblur="isnull(this.id,'notpass')"  id="password" class="ipt" type="password" name="password" value="" size="20" /></th>
+                        <th class="request" id="notpass"></th> 
+                      </tr>  
+                      
+                      <tr class="Inputtr">
+                     	<th><strong>确认密码</strong></th>
+                        <th><input id="password2" class="ipt"  name="log" type="password" value="" onblur="checkpassword('password1','password2')" size="20" /></th>
+                        <th class="request" id="notsame"></th>
+                      </tr>
+                      <tr class="Inputtr">
+                     	<th><strong>邮箱</strong></th>
+                        <th><input id="email" class="ipt" name="email" onblur="isemail(this.id)" type="text" value="" size="20" /></th>
+                        <th class="request"id="notmail"></th>
+                      </tr> 
+                      <tr>
+                      <th></th>
+                     	<th><input id="submitbutton" onclick="submitrigster()" type="submit" name="button" value="提交" style="color:#000; width:100px;"/></th>
+                     </tr>
+                </table>
+        </form>
+    </div>
 </body>
 </html>
