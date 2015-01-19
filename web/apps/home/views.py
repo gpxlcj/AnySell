@@ -9,6 +9,10 @@ INDEX_HTML = 'index.html'
 EMPTY_ANS = 10101
 DATA_ANS = 11101
 
+class DormitoryListByDistrict:
+    dormitory = list()
+    dormitories = list()
+    district = str()
 
 def index(request):
 
@@ -17,18 +21,28 @@ def index(request):
     :param request: class django Request
     :return: class django Response
     '''
-
     if request.method=='GET':
 
-        dormintaries = Dormitory.objects.all()
+        username = str()
+        user = request.user
+        if user.is_anonymous():
+            print 'ok'
+            username = ""
+        else:
+            username = user.username
+        districts = District.objects.all()
+        dormitaries = Dormitory.objects.all()
         latitudes = list()
         longitudes = list()
 
         total = 0
-        for i in dormintaries:
+        for i in dormitaries:
             latitudes.append(i.coordinate.latitude)
             longitudes.append(i.coordinate.longitude)
             total += 1
+
+        for i in districts:
+            pass
 
         return render_to_response(INDEX_HTML, locals())
 
@@ -43,27 +57,22 @@ def index(request):
 
     else:
         return Http404
-def district_dorm(request):
+def publish(request):
 
     if request.method == 'GET':
-
-        dormitaries = str()
-        latitude = float()
-        longitude = float()
-        data = list()
-        if request.GET.has_key('dorm'):
-            try:
-                district_id = int(request.GET['dorm'])
-                district = District.objects.get(id_code=district_id)
-            except:
-                return Http404
-            dormitaries = Dormitory.objects.filter(district=district)
+        user = request.user
+        if user.is_anonymous():
+            return HttpResponseRedirect("/account/login/")
         else:
-            dormitaries = Dormitory.objects.all()
-        for i in dormitaries:
-            data.append({'latitude': i.coordinate.latitude, 'longitude': i.coordinate.longitude})
-        return render_json(data)
-
+            if not user.user_detail_info.phone and user.user_detail_info.dormitory:
+                return HttpResponseRedirect("/account/usercenter/")
+            else:
+                pass
+        categories = Category.objects.all()
+        districts = District.objects.all()
+        return render_to_response('publishgoods.html', locals())
+    elif request.method == 'POST':
+        pass
     else:
         return Http404
 
@@ -174,21 +183,21 @@ def research(request):
     else:
         return Http404
 
-def product_info(request, product_id):
+def product_info(request, pro):
 
-    try:
-        if request.method == 'GET':
-            product = Production.objects.filter(id=product_id)
-            if product:
-                product = product[0]
-            else:
-                return Http404
-
-            return render_to_response('product_info', locals())
+#    try:
+    if request.method == 'GET':
+        product = Production.objects.filter(id=int(pro))
+        if product:
+            product = product[0]
         else:
-            return Http404
-    except:
-        return HttpResponse('Server error')
+            HttpResponse('No product like this')
+
+        return render_to_response('goodmodel.html', locals())
+    else:
+        return Http404
+#    except:
+    return HttpResponse('Server error')
 
 def production_list(request):
 

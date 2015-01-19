@@ -1,0 +1,103 @@
+{% extends "base.html"%}
+
+{% block content %}
+<body onload="Map()">
+{% include "module/header.html" %}
+<!--插进来一个-->
+	<div class="onefive-div">
+    	<div class="onefive-div-func">
+    		<div class="onefive-div-logo">
+        	</div>
+            <div class="onefive-div-search">         
+            <form style=" position:absolute;left:40%;top:25%;width:400px; height:50px;">
+            	<table style="height:50px">
+                <tr><input id="onefive-div-text" class="onefive-div-search-text" type="text"/>
+                <input id="onefive-div-search-submit" class="onefive-div-search-submit" value="搜索" type="button" onclick="SearchSubmit('onefive-div-text');"/></tr>
+                </table>
+            </form>  
+            <div class="onefive-div-tag" id="tag_div">
+            </div>          
+            </div>            
+        </div>
+    </div>
+<!--插进来一个-->
+<!--眉头下面那个-->
+	<div class="second-div">
+    	<div class="div-func">
+        	<div class="second_div_func_each">
+            	<div class="second_div_func_left" id="second_div_lim1" onclick="ClassifyChoice(this.id)" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#f0f0f4')">全部</div>
+                <div class="second_div_func_left" id="second_div_lim2" onclick="ClassifyChoice(this.id)" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#f0f0f4')">闲置数码</div>
+                <div class="second_div_func_left" id="second_div_lim3" onclick="ClassifyChoice(this.id)" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#f0f0f4')">闲置书籍</div>
+                <div class="second_div_func_left" id="second_div_lim4" onclick="ClassifyChoice(this.id)" onMouseOver="ChangeColor('second_div_lim4','#afdd22')" onMouseOut="ChangeColor('second_div_lim4','#f0f0f4')">闲置衣物</div>
+                <div class="second_div_func_left" id="second_div_lim5" onclick="ClassifyChoice(this.id)" onMouseOver="ChangeColor('second_div_lim5','#afdd22')" onMouseOut="ChangeColor('second_div_lim5','#f0f0f4')">闲置日用</div>
+            </div>
+        	<div class="second_div_func_right">我的闲置<img src="/static/images/arrow.png" id="img_arrow"></img></div>
+            <div class="second_div_func_right" onclick="window.open('/publish')">我要发布</div>
+        </div>
+    </div>	
+
+<!--眉头下面那个-->
+<div class="secondfive-div-pre" >
+	<div class="secondfive-div">
+    	<div class="secondfive-divSS0">标记地图:</div>
+    	<div class="secondfive-divSSS">      	
+			<div class="secondfive-divSS1" id="Paint1" onclick="StartPointPaint('Paint1','#afdd22','Paint2','#057748')" >启动</div>
+   			<div class="secondfive-divSS2" id="Paint2" onclick="StopPointPaint('Paint2','#afdd22','Paint1','#057748')" >关闭</div>
+        </div>
+        <div class="secondfive-divSS0">测距离:</div>
+    	<div class="secondfive-divSSS">      	
+			<div class="secondfive-divSS1" id="Paint3" onclick="StartGetMouseDis('Paint3','#afdd22','Paint4','#057748')" >启动</div>
+   			<div class="secondfive-divSS2" id="Paint4" onclick="StopGetMouseDis('Paint4','#afdd22','Paint3','#057748')" >关闭</div>
+        </div>
+        <div class="secondfive-divSS0">矩形选择:</div>
+    	<div class="secondfive-divSSS">      	
+			<div class="secondfive-divSS1" id="Paint5" onclick="StartAddPolygon()" >启动</div>
+   			<div class="secondfive-divSS2" id="Paint6" onclick="StopPointPaint('Paint6','#afdd22','Paint5','#057748')" >关闭</div>
+        </div>
+    </div>
+</div>
+<!--地图那一栏-->
+   <div class="third-div-pre"> 	
+	<div class="third-div">
+    	<div class="connect-map" id="connect-map-id" style="width:200px;height:480px">       	
+        </div>
+        <div id="container" style="width:590px;height:480px"></div>	
+        <div class="connect-map" style="width:120px;height:480px">      
+        	<div class="connect-map-area" style="width:110px;height:50px" onclick="AreaChoiceFirst('001_17_01_01_001_0100','001_17_01_01_001_0200','001_17_01_01_001_0300')">文理学部</div> 
+            <ul id="001_17_01_01_001_0100" style="display:none" >
+				 <div class="over_2" id="1" onclick="GetCoordinate(this.id,null)">梅园</div>
+				 <div class="over_2" id="001_17_01_01_001_0111">枫园</div> 
+				 <div class="over_2" id="001_17_01_01_001_0103">桂园</div> 
+				 <div class="over_2" id="001_17_01_01_001_0124">湖滨</div>                  
+			</ul>
+          
+            <div class="connect-map-area" style="width:110px;height:50px" onclick="AreaChoiceFirst('001_17_01_01_001_0200','001_17_01_01_001_0100','001_17_01_01_001_0300')">信息学部</div> 
+            	<ul id="001_17_01_01_001_0200" style="display:none" >
+				 <div class="over_2" id="001_17_01_01_001_0301">国软</div>  
+				 <div class="over_2" id="001_17_01_01_001_0308">其他</div>                  
+				</ul>
+            
+            <div class="connect-map-area" style="width:110px;height:50px"onclick="AreaChoiceFirst('001_17_01_01_001_0300','001_17_01_01_001_0100','001_17_01_01_001_0200')">工学部</div> 
+           		 <ul id="001_17_01_01_001_0300" style="display:none"  >
+				 <div class="over_2" id="001_17_01_01_001_0309">水工试验场</div>  
+				 <div class="over_2" id="001_17_01_01_001_0302">动机院</div> 
+				 <div class="over_2" id="001_17_01_01_001_0311">其他</div>
+				</ul>
+
+            <div class="connect-map-area" style="width:110px;height:50px">医学部</div> 
+        </div>	
+    </div>
+   </div>
+<!--地图那一栏-->	
+<!--推荐栏-->
+<div class="forth-div">
+	<div class="forth-div-func"></div>	
+ 	<div class="forth-div-func"></div>
+ 	<div class="forth-div-func"></div>
+	<div class="forth-div-func"></div>
+</div>
+<!--推荐栏-->
+<div class="theme-popover-mask"></div><!--登陆窗口的覆盖-->
+
+</body>
+{% endblock %}
