@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="/static/css/basic.css"/>
+<link rel="stylesheet" type="text/css" href="/static/css/publish.css"/>
+
+<script type="text/javascript" src="/static/js/GetMap.js"></script>
+<script type="text/javascript" src="/static/js/basic.js"></script>
+<script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=7zmiSHRUA61ha3tbu8ZRHGCH"></script>
+<!--加载鼠标绘制工具-->
+	<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+</head>
+<body onload="Map()">
+<!--divFirst-->
+	<div class="first-div">
+    	<div class="div-func">
+        	<div class="first-div-func-each" id="topTag1" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')" onclick="TurnOut()">&diams;登陆</div>
+            <div class="first-div-func-each" id="topTag2" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">购物车</div>
+            <div class="first-div-func-each" id="topTag3" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">&hearts;收藏夹</div>
+            <div class="first-div-func-each" id="topTag4" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">网站导航</div>
+            <div class="first-div-func-each" id="topTag5" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#057748')">新消息</div>
+
+        </div>
+    </div>
+<!--divSecond-->
+    <div class="second-div">
+    	<div class="div-func">
+        	<div class="second_div_func_each">
+            	<div class="second_div_func_left" onclick="window.open('index.html')">首页</div>
+                <div class="second_div_func_left">闲置数码</div>
+                <div class="second_div_func_left">闲置书籍</div>
+                <div class="second_div_func_left">闲置衣物</div>
+                <div class="second_div_func_left">闲置日用</div>
+            </div>
+        	<div class="second_div_func_right">我的闲置<img src="../pic/arrow.png" id="img_arrow"></img></div>
+            <div class="second_div_func_right" onclick="window.open('publishgoods.html')">我要发布</div>
+        </div>
+    </div>
+    <div class="third-div" id="third-div-id">
+    	<div class="connect-map" style="width:350px;height:480px">    
+        	<form class="theme-signin" name="loginform" action="" method="post">
+                <table class="third-div-table">
+                     <tr><th><h4>编辑你的物品</h4></th></tr>
+                     <tr>
+                     	<th><strong>标题</strong></th>
+                        <th><input class="ipt" type="text" name="title" value="" size="20" /></th>
+                      </tr>
+                     <tr>
+                     <div id="itemChoiceFirst">
+                         {% for category in categories%}
+                        	<div class="item" id="item{{category.id}}" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#fff')" onclick="ChangeAndMakeSure(this.id)">{{category.name}}</div>
+                         {% endfor %}
+                     </div>
+                     	<th><strong>类目</strong></th>
+                        <th><div class="ChoiceDiv" id="itemChoice" name="category" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#cfcfcf')" onclick="AddTermDiv('itemChoiceFirst')" >
+                        请选择</div></th>
+                     </tr>
+                     <tr>
+                     	<th><strong>新旧</strong></th>
+                        	<th>
+                            	<label><input name="IsNew" type="radio" value="" />全新</label> 
+                        		<label><input name="IsNew" type="radio" value="" />非全新</label> 
+                            </th>
+                     </tr>
+                     <tr>
+                     	<th><strong>转卖方式</strong></th>
+                        <th><input class="ipt" type="text" name="pwd" value="" size="20" /></th>
+                     </tr>
+                     <tr>
+                     	<th><strong>价格</strong></th>
+                        <th><input class="ipt" type="text" name="price" value="" size="20" /></th>
+                     </tr>
+                     <tr>
+                     	<th><strong>原价</strong></th>
+                        <th><input class="ipt" type="text" name="pwd" value="" size="20" /></th>
+                     </tr>
+                      <tr>
+                     	<th><strong>讲价</strong></th>
+                        <th>
+                        	<label><input name="IsBar" type="radio" value="" />接受</label> 
+                        	<label><input name="IsBar" type="radio" value="" />不接受</label> 
+                        </th>
+                     </tr>
+                      <tr>
+                     	<th><strong>联系方式</strong></th>
+                        <th><input class="ipt" type="text" name="pwd" value={{user.user_detail_info.phone}} size="20" />
+                        <div class="ChoiceDiv">发送验证码</div></th>
+                     </tr>
+                      <tr>
+                      <tr>
+                     	<th><strong>验证码</strong></th>
+                        <th><input class="ipt" type="text" name="pwd" value="" size="20" />
+                     </tr>
+                      <tr>
+                     	<th><strong>所在地</strong></th>
+                        <th>
+                        	<div class="ChoiceDiv">中国</div>
+                            <div class="ChoiceDivEmpty"></div>
+                        	<div class="ChoiceDiv">湖北省</div>
+                            <div class="ChoiceDivEmpty"></div>
+                            <div class="ChoiceDiv">武汉市</div>
+                            <div class="ChoiceDivEmpty"></div>
+                            <div class="ChoiceDiv">武汉大学</div>
+                            <div class="ChoiceDivEmpty"></div>
+                            <div class="ChoiceDiv">请选择学部</div>
+                            <div class="ChoiceDivEmpty"></div>
+                            <div class="ChoiceDiv">请选择宿舍</div>
+                        </th>
+                     </tr>                   
+                     
+                     <tr>
+                     	<th><input class="btn btn-primary" type="submit" name="submit" value="提交" style="color:#000"/></th>
+                     </tr>
+                </table>
+           </form> 	
+        </div>
+        <div id="container" style="width:590px;height:480px"></div> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content%}
+<body onload="Map()">
+{% include "module/header.html"%}
+<!--插进来一个-->
+	<div class="onefive-div">
+    	<div class="onefive-div-func">
+    		<div class="onefive-div-logo">
+        	</div>
+            <div class="onefive-div-search">
+            <form style=" position:absolute;left:40%;top:25%;width:400px; height:50px;">
+            	<table style="height:50px"><tr><input class="onefive-div-search-text" type="text"/><input class="onefive-div-search-submit" value="搜索" type="submit"/></tr></table>
+            </form>           
+            </div>            
+        </div>
+    </div>
+<!--插进来一个-->
+<!--眉头下面那个-->
+	<div class="second-div">
+    	<div class="div-func">
+        	<div class="second_div_func_each">
+            	<div class="second_div_func_left" id="second_div_lim1" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#f0f0f4')">全部</div>
+                <div class="second_div_func_left" id="second_div_lim2" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#f0f0f4')">闲置数码</div>
+                <div class="second_div_func_left" id="second_div_lim3" onMouseOver="ChangeColor(this.id,'#afdd22')" onMouseOut="ChangeColor(this.id,'#f0f0f4')">闲置书籍</div>
+                <div class="second_div_func_left" id="second_div_lim4" onMouseOver="ChangeColor('second_div_lim4','#afdd22')" onMouseOut="ChangeColor('second_div_lim4','#f0f0f4')">闲置衣物</div>
+                <div class="second_div_func_left" id="second_div_lim5" onMouseOver="ChangeColor('second_div_lim5','#afdd22')" onMouseOut="ChangeColor('second_div_lim5','#f0f0f4')">闲置日用</div>
+            </div>
+        	<div class="second_div_func_right">我的闲置<img src="/static/image/arrow.png" id="img_arrow"></img></div>
+            <div class="second_div_func_right" onclick="window.open('publishgoods.html')">我要发布</div>
+        </div>
+    </div>	
+<!--眉头下面那个-->
+<!--物品介绍-->
+<div class="Display">
+	<div class="DisplayPic" >
+    	<div class="UpOfPicDis">
+        	<img src="/media/{{product.cover.image}}" width="100%" height="100%" />
+        </div>
+        <div class="DownOfPicDis">
+        	<ul>
+                <li><img id="Downpic0" onclick="OverWhichPic(this.id)" class="DownOfPicDis_pic2" src="/static/image/picm03.jpg" /></li>
+                <li><img id="Downpic1" onclick="OverWhichPic(this.id)"class="DownOfPicDis_pic2" src="/static/image/picm05.jpg" /></li>
+                <li><img id="Downpic2" onclick="OverWhichPic(this.id)" class="DownOfPicDis_pic2" src="/static/image/picm03.jpg" /></li>
+                <li><img id="Downpic3" onclick="OverWhichPic(this.id)" class="DownOfPicDis_pic2" src="/static/image/picm05.jpg" /></li>
+            </ul>     
+        </div>
+        <div class="DownOfPicDis2">
+        	<ul>
+                <li><img id="linkDownpic0" class="DownOfPicDis_pic" src="/static/image/slideline.jpg" /></li>
+                <li><img id="linkDownpic1" class="DownOfPicDis_pic" src="/static/image/slideline.jpg" /></li>
+                <li><img id="linkDownpic2" class="DownOfPicDis_pic" src="/static/image/slideline.jpg" /></li>
+                <li><img id="linkDownpic3" class="DownOfPicDis_pic" src="/static/image/slideline.jpg" /></li>
+            </ul>     
+        </div>      	
+    </div>	<!--图片-->
+    <div class="PicDisplayAddrSum">
+    	<div class="DisplayAddrSear">
+       	 <input id="StartPos" class="Position" type="text"/>
+         <input class="GoButton" onclick="GetAddressName('StartPos','AimPos');" value="TO" type="button"/>
+         <input id="AimPos" class="Position" type="text"/>
+        </div>
+		<div class="DisplayAddr" id="container" style="width:450px; height:400px;"></div>
+    </div>
+	<!--地图-->
+	<div class="DisplayText1">
+    	<h1 class="title">{{product.title}}</h1>
+    	<h1 class="sell">转卖价：¥</h1><h1 class="howmuch">{{product.price}}</h1>
+		<hr class="linedivide"></hr>
+    <input class="buybutton" value="立即购买" type="button"/>
+    </div>
+    <div class="DisplayText2">
+    	<h1 class="pubtime1">发布时间：</h1>
+    	<h1 class="pubtime2">{{product.publish_time}}</h1>
+        <h1 class="storage1">库存：</h1>
+    	<h1 class="storage2">{{product.number}}</h1>
+        <h1 class="address1">物品地址：</h1>
+    	<h1 class="address2">梅园四路</h1>
+    </div>
+    <!--文字及购买-->
+</div>
+<!--物品介绍-->
+
+<div class="theme-popover-mask"></div><!--登陆窗口的覆盖-->
+</body>
+{% endblock %}
